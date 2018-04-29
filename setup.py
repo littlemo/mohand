@@ -12,7 +12,7 @@ setup(
     description='通用自动化处理工具',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    keywords='mohand cli automatic',
+    keywords='mohand cli automation',
     packages=find_packages(exclude=('docs', 'tests*')),
     include_package_data=True,
     zip_safe=False,
