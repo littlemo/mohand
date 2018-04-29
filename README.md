@@ -19,6 +19,15 @@
 
 [![Documentation Status](https://readthedocs.org/projects/mohand/badge/?version=latest)](http://mohand.readthedocs.io/zh_CN/latest/?badge=latest)
 
+### PyPi
+
+[![PyPI](https://img.shields.io/pypi/v/mohand.svg)](https://pypi.org/project/mohand/)
+[![PyPI - Wheel](https://img.shields.io/pypi/wheel/mohand.svg)](https://pypi.org/project/mohand/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mohand.svg)](https://pypi.org/project/mohand/)
+[![PyPI - Format](https://img.shields.io/pypi/format/mohand.svg)](https://pypi.org/project/mohand/)
+[![PyPI - Implementation](https://img.shields.io/pypi/implementation/mohand.svg)](https://pypi.org/project/mohand/)
+[![PyPI - Status](https://img.shields.io/pypi/status/mohand.svg)](https://pypi.org/project/mohand/)
+
 ### 其他
 
 [![license](https://img.shields.io/github/license/littlemo/mohand.svg)](https://github.com/littlemo/mohand)
