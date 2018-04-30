@@ -105,4 +105,4 @@ ENV/
 
 # Customs
 backups
-version.py
+VERSION
