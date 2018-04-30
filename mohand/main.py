@@ -4,7 +4,10 @@
 用以提供终端可执行命令
 """
 import os
+import click
+
 from mohand import state
+from mohand.version import get_cli_version
 
 
 def _is_package(path):
@@ -57,3 +60,32 @@ def find_mohandfile(names=None):
             path = os.path.join('..', path)
 
     return None
+
+
+def print_author(ctx, param, value):
+    if not value or ctx.resilient_parsing:
+        return
+    click.echo('Moore.Huang <moore@moorehy.com>')
+    ctx.exit()
+
+
+def print_version(ctx, param, value):
+    if not value or ctx.resilient_parsing:
+        return
+    version = get_cli_version()
+    click.echo('Version {}'.format(version))
+    ctx.exit()
+
+
+@click.group()
+@click.option(
+    '--author', '-a', is_flag=True, callback=print_author,
+    expose_value=False, is_eager=True, help='作者信息')
+@click.option(
+    '--version', is_flag=True, callback=print_version,
+    expose_value=False, is_eager=True, help='版本信息')
+def main():
+    """
+    通用自动化处理工具
+    """
+    pass

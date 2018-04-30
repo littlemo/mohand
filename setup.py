@@ -26,6 +26,9 @@ setup(
     },
     install_requires=open('requirements/pip.txt').read().splitlines(),
     entry_points={
+        'console_scripts': [
+            'mohand = mohand.main:main',
+        ]
     },
     classifiers=[
         'Development Status :: 1 - Planning',
