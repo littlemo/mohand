@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from mohand.version import get_setup_version
 
 
 setup(
@@ -8,7 +9,7 @@ setup(
     author_email='moore@moorehy.com',
     maintainer='littlemo',
     maintainer_email='moore@moorehy.com',
-    version='0.0.0',
+    version=get_setup_version(),
     description='通用自动化处理工具',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
