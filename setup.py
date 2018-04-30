@@ -23,7 +23,7 @@ setup(
         'Source': 'https://github.com/littlemo/mohand',
         'Tracker': 'https://github.com/littlemo/mohand/issues',
     },
-    install_requires=[],
+    install_requires=open('requirements/pip.txt').read().splitlines(),
     entry_points={
     },
     classifiers=[
