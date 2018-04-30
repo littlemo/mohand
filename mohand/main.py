@@ -72,8 +72,7 @@ def print_author(ctx, param, value):
 def print_version(ctx, param, value):
     if not value or ctx.resilient_parsing:
         return
-    version = get_cli_version()
-    click.echo('Version {}'.format(version))
+    click.echo('Version {}'.format(env.version))
     ctx.exit()
 
 
