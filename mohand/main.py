@@ -81,9 +81,8 @@ def print_version(ctx, param, value):
 @click.option(
     '--author', '-a', is_flag=True, callback=print_author,
     expose_value=False, is_eager=True, help='作者信息')
-@click.option(
-    '--version', is_flag=True, callback=print_version,
-    expose_value=False, is_eager=True, help='版本信息')
+@click.version_option(
+    version=get_cli_version(), help='版本信息')
 def main():
     """
     通用自动化处理工具
