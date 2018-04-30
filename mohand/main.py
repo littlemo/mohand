@@ -6,7 +6,7 @@
 import os
 import click
 
-from mohand import state
+from mohand.state import env
 from mohand.version import get_cli_version
 
 
@@ -32,7 +32,7 @@ def find_mohandfile(names=None):
     :rtype: str
     """
     # 如果没有明确指定，则包含 env 中的值
-    names = names or [state.env.mohandfile]
+    names = names or [env.mohandfile]
 
     # 若无 ``.py`` 扩展名，则作为待查询名称，追加到 names 末尾
     if not names[0].endswith('.py'):
