@@ -16,6 +16,9 @@ VERSION = (0, 0, 0, VERSION_SUFFIX_DEV, 0)
 def get_setup_version():
     """
     获取打包使用的版本号，符合 PYPI 官方推荐的版本号方案
+
+    :return: PYPI 打包版本号
+    :rtype: str
     """
     ver = '.'.join(map(str, VERSION[:3]))
 
