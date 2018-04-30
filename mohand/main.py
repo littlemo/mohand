@@ -19,7 +19,7 @@ def find_mohandfile(names=None):
     """
     尝试定位 ``mohandfile`` 文件，明确指定或逐级搜索父路径
 
-    :param str names: 待查找的文件名
+    :param str names: 可选，待查找的文件名，主要用于调试，默认使用终端传入的配置
     :return: ``mohandfile`` 文件所在的绝对路径
     :rtype: str
     """
