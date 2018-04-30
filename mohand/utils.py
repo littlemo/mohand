@@ -1,3 +1,9 @@
+"""
+工具模块
+
+用以提供全局通用工具方法&类
+"""
+
 
 class _AttributeDict(dict):
     """
