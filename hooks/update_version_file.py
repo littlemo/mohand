@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # Author: Moore.Huang <moore@moorehy.com>
+"""
+此脚本用于更新基于Git的版本说明文件，需在 ``.git/hooks``
+中添加相关钩子，并在其中执行本脚本。建议使用 ``post-commit`` 钩子
+"""
 import os
 import sys
 import subprocess
