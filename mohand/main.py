@@ -1,3 +1,8 @@
+"""
+主入口模块
+
+用以提供终端可执行命令
+"""
 import os
 from mohand import state
 
