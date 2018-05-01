@@ -1,1 +1,2 @@
 click~=6.7
+stevedore~=1.28.0
