@@ -89,7 +89,7 @@ def main(*args, **kwargs):
     """
     通用自动化处理工具
     """
-    print('main', args, kwargs)
+    print('main:', args, kwargs)
 
     # 使用终端传入的 option 更新 env 中的配置值
     env.update(kwargs)
