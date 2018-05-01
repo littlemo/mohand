@@ -7,7 +7,7 @@ import os
 import click
 
 from mohand.state import env
-from mohand.load import load_hands
+from mohand.hand import load_hands
 from mohand.version import get_cli_version
 
 
