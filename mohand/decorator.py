@@ -6,7 +6,9 @@
 from mohand.utils import _AttributeDict
 
 
-hand = _AttributeDict()
+hand = _AttributeDict({
+    '_click': click,
+})
 
 
 def register(func):
