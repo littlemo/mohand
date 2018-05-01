@@ -7,6 +7,7 @@ import os
 import click
 
 from mohand.state import env
+from mohand.load import load_hands
 from mohand.version import get_cli_version
 
 
@@ -93,3 +94,18 @@ def main(*args, **kwargs):
 
     # 使用终端传入的 option 更新 env 中的配置值
     env.update(kwargs)
+
+
+hand = load_hands()
+# print('HandDict@mohand:', id(hand))
+
+
+@hand._click.argument('custom', nargs=-1)
+@hand._click.option('--test', default='success', help='测试附加参数')
+@hand.expect(cmd='test_cmd_str', timeout=70)
+def test(*args, **kwargs):
+    """啦啦啦"""
+    print('test:', args, kwargs)
+
+
+main.add_command(test)
