@@ -27,7 +27,7 @@ setup(
     install_requires=open('requirements/pip.txt').read().splitlines(),
     entry_points={
         'console_scripts': [
-            'mohand = mohand.main:main',
+            'mohand = mohand.main:cli',
         ]
     },
     classifiers=[

@@ -86,11 +86,11 @@ def print_version(ctx, param, value):
     expose_value=False, is_eager=True, help='作者信息')
 @click.version_option(
     version=get_cli_version(), help='版本信息')
-def main(*args, **kwargs):
+def cli(*args, **kwargs):
     """
     通用自动化处理工具
     """
-    print('main:', args, kwargs)
+    print('cli:', args, kwargs)
 
     # 使用终端传入的 option 更新 env 中的配置值
     env.update(kwargs)
@@ -108,4 +108,4 @@ def test(*args, **kwargs):
     print('test:', args, kwargs)
 
 
-main.add_command(test)
+cli.add_command(test)
