@@ -3,6 +3,7 @@
 
 用以提供全局通用工具方法&类
 """
+from threading import RLock
 
 
 class _AttributeDict(dict):
@@ -42,3 +43,39 @@ class _AttributeDict(dict):
             value = self.get(name)
             if value:
                 return value
+
+
+class Singleton(type):
+    """
+    单例类实现(线程安全)
+
+    .. note::
+
+        参考 @马式超 的 `singleton <https://github.com/ShichaoMa/toolkit/
+        blob/master/toolkit/singleton.py>`_ 实现
+
+    """
+    lock = RLock()
+
+    def __new__(mcs, *args, **kwargs):
+        """
+        元类msc通过__new__组建类对象，其中msc指Singleton
+
+        :param list args: 可以包含类构建所需要三元素， ``类名`` ， ``父类`` ，
+            ``命名空间``, 其中命名空间中 __qualname__ 和函数的 __qualname__
+            均含有 classname 做为前缀，在这里，如果想替换类名，需要把以上全部替换才可以。
+        :param dict kwargs: 可以自定义传递一些参数
+        :return: 返回类对象,通过super(Singleton, mcs).__new__此时已经组装好了类
+        :rtype: class
+        """
+        class_name, super_cls, dict_ = args
+        dict_['_instance'] = None
+        cls_ = super(Singleton, mcs).__new__(
+            mcs, class_name, super_cls, dict_, **kwargs)
+        return cls_
+
+    def __call__(cls, *args, **kwargs):
+        with cls.lock:
+            cls._instance = cls._instance or \
+                super(Singleton, cls).__call__(*args, **kwargs)
+        return cls._instance
