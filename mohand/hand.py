@@ -59,3 +59,6 @@ def load_hands():
     # print('HandDict@mohand:', id(handdict))
 
     return handdict
+
+
+hand = HandDict()
