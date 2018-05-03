@@ -159,6 +159,7 @@ def cli(*args, **kwargs):
     env.update(kwargs)
 
 
+# 加载所有扩展 hand
 hand = load_hands()
 # print('HandDict@mohand:', id(hand))
 
