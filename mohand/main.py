@@ -6,10 +6,20 @@
 import os
 import sys
 import click
+import logging
 
 from mohand.state import env
 from mohand.hand import load_hands
 from mohand.version import get_cli_version
+
+
+LOG_FORMAT = "[%(asctime)s][%(name)s:%(lineno)s][%(levelname)s] %(message)s"
+format_ = logging.Formatter(LOG_FORMAT)
+sh = logging.StreamHandler(stream=sys.stdout)
+sh.setFormatter(format_)
+log = logging.getLogger(__name__)
+log.setLevel(logging.INFO)
+log.addHandler(sh)
 
 
 def _is_package(path):
