@@ -162,6 +162,15 @@ def cli(*args, **kwargs):
 hand = load_hands()
 # print('HandDict@mohand:', id(hand))
 
+# 获取 mohandfile 文件路径
+mohandfile = find_mohandfile()
+if not mohandfile:
+    click.echo('[{}] {}'.format(
+        click.style('ERROR', bg='red'),
+        '未找到 mohandfile 文件！'))
+    sys.exit(1)
+log.info('mohandfile => {}'.format(mohandfile))
+
 
 @hand._click.argument('custom', nargs=-1)
 @hand._click.option('--test', default='success', help='测试附加参数')
