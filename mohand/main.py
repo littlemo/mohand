@@ -25,6 +25,10 @@ log.addHandler(sh)
 def _is_package(path):
     """
     判断传入的路径是否为一个 Python 模块包
+
+    :param str path: 待判断的路径
+    :return: 返回是，则传入 path 为一个 Python 包，否则不是
+    :rtype: bool
     """
     def _exists(s):
         return os.path.exists(os.path.join(path, s))
