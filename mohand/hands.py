@@ -61,4 +61,19 @@ def load_hands():
     return handdict
 
 
+class Hand(object):
+    """
+    希望被提取为 MoHand 的 hand 的抽象基类
+
+    其子类的实例将被作为合法的 hand 从 handfile 中被 ``mohand`` 工具加载
+
+    对于如何使用 `~mohand.hands.Hand` 子类，可查看相关文档
+    """
+    def __init__(self, name=None, *args, **kwargs):
+        self.name = name or 'undefined'
+
+    def run(self):
+        raise NotImplementedError
+
+
 hand = HandDict()
