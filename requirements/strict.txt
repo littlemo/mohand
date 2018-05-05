@@ -1,0 +1,28 @@
+alabaster==0.7.10
+Babel==2.5.3
+certifi==2018.4.16
+chardet==3.0.4
+click==6.7
+colorama==0.3.9
+docutils==0.14
+idna==2.6
+imagesize==1.0.0
+Jinja2==2.10
+MarkupSafe==1.0
+-e git+github:littlemo/mohand.git@15f1059155ea41bf3c63c6c1f091759cc6f8b28c#egg=mohand
+-e git+github:littlemo/mohand-plugin-expect.git@f9d9d9bd622908db2da83beb2485ac8426bb99d1#egg=mohand_plugin_expect
+packaging==17.1
+pbr==4.0.2
+pexpect==4.5.0
+ptyprocess==0.5.2
+Pygments==2.2.0
+pyparsing==2.2.0
+pytz==2018.4
+requests==2.18.4
+six==1.11.0
+snowballstemmer==1.2.1
+Sphinx==1.7.4
+sphinx-rtd-theme==0.3.0
+sphinxcontrib-websupport==1.0.1
+stevedore==1.28.0
+urllib3==1.22
