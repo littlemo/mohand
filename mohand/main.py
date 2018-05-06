@@ -99,6 +99,21 @@ def get_commands_from_module(imported):
     return imported.__doc__, cmd_dict
 
 
+def extract_commands(imported_vars):
+    """
+    从传入的变量列表中提取命令( ``click.core.Command`` )对象
+
+    :param dict_items imported_vars: 字典的键值条目列表
+    :return: 判定为终端命令的对象字典
+    :rtype: dict(str, obj)
+    """
+    commands = dict()
+    for tup in imported_vars:
+        name, obj = tup
+        if is_command_object(obj):
+            commands.setdefault(name, obj)
+    return commands
+
 
 def load_handfile(path, importer=None):
     """
