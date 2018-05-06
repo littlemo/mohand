@@ -99,6 +99,17 @@ def get_commands_from_module(imported):
     return imported.__doc__, cmd_dict
 
 
+def is_command_object(a):
+    """
+    验证传入的 a 是否为一个 CLI 命令对象
+
+    :param object a: 待判断对象
+    :return: 是否为 ``click.core.Command`` 命令对象
+    :rtype: bool
+    """
+    return isinstance(a, click.core.Command)
+
+
 def extract_commands(imported_vars):
     """
     从传入的变量列表中提取命令( ``click.core.Command`` )对象
