@@ -9,7 +9,7 @@ import click
 import logging
 
 from mohand.state import env
-from mohand.hands import load_hands
+from mohand import hands
 from mohand.version import get_cli_version
 
 
@@ -212,8 +212,8 @@ def cli(*args, **kwargs):
 
 
 # 加载所有扩展 hand
-hand = load_hands()
-# print('HandDict@mohand:', id(hand))
+hands.load_hands()
+log.debug('hand@mohand: {}'.format(hands.hand))
 
 # 获取 handfile 文件路径
 handfile = find_handfile()
