@@ -227,14 +227,6 @@ log.info('handfile => {}'.format(handfile))
 # 加载 handfile 文件
 handfile_doc, commands = load_handfile(handfile)
 
-@hand._click.argument('custom', nargs=-1)
-@hand._click.option('--test', default='success', help='测试附加参数')
-@hand.expect(cmd='test_cmd_str', timeout=70)
-def test(*args, **kwargs):
-    """啦啦啦"""
-    print('test:', args, kwargs)
-
-
 # 将从 handfile 文件中加载到的 Command 注册到 cli 中
 for cmd in commands.values():
     cli.add_command(cmd)
