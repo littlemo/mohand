@@ -15,5 +15,5 @@ env = _AttributeDict({
     'version': get_cli_version(),
 
     # 终端再赋值
-    'mohandfile': 'mohandfile.py',
+    'handfile': 'handfile.py',
 })
