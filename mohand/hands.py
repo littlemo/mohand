@@ -40,8 +40,6 @@ def load_hands():
     :return: 返回hand注册字典(单例)
     :rtype: HandDict
     """
-    handdict = HandDict()
-
     # 注册hand插件
     mgr = stevedore.ExtensionManager(
         namespace='mohand.plugin.hand',
@@ -49,16 +47,12 @@ def load_hands():
 
     def register_hand(ext):
         _hand = ext.obj.register()
-        if hasattr(handdict, _hand.__name__):
+        if hasattr(hand, _hand.__name__):
             raise HandDuplicationOfNameError(_hand.__name__)
-        handdict[_hand.__name__] = _hand
-        # print('register hand:', _hand.__name__)
+        hand[_hand.__name__] = _hand
 
     mgr.map(register_hand)
-    # print('HandDict@mohand:', handdict)
-    # print('HandDict@mohand:', id(handdict))
-
-    return handdict
+    return hand
 
 
 hand = HandDict()
