@@ -224,6 +224,8 @@ if not handfile:
     sys.exit(1)
 log.info('handfile => {}'.format(handfile))
 
+# 加载 handfile 文件
+handfile_doc, commands = load_handfile(handfile)
 
 @hand._click.argument('custom', nargs=-1)
 @hand._click.option('--test', default='success', help='测试附加参数')
