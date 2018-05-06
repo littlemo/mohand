@@ -235,4 +235,6 @@ def test(*args, **kwargs):
     print('test:', args, kwargs)
 
 
-cli.add_command(test)
+# 将从 handfile 文件中加载到的 Command 注册到 cli 中
+for cmd in commands.values():
+    cli.add_command(cmd)
