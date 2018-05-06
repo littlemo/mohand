@@ -9,7 +9,7 @@ import click
 import logging
 
 from mohand.state import env
-from mohand.hand import load_hands
+from mohand.hands import load_hands
 from mohand.version import get_cli_version
 
 
