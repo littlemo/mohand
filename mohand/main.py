@@ -78,7 +78,27 @@ def find_handfile(names=None):
     return None
 
 
+def get_commands_from_module(imported):
     """
+    从传入的 ``imported`` 中获取所有 ``click.core.Command``
+
+    :param module imported: 导入的Python包
+    :return: 包描述文档，仅含终端命令函数的对象字典
+    :rtype: (str, dict(str, obj))
+    """
+    # 如果存在 <module>.__all__ ，则遵守
+    imported_vars = vars(imported)
+    if "__all__" in imported_vars:
+        imported_vars = [
+            (name, imported_vars[name]) for name in
+            imported_vars if name in imported_vars["__all__"]]
+    else:
+        imported_vars = imported_vars.items()
+
+    cmd_dict = extract_commands(imported_vars)
+    return imported.__doc__, cmd_dict
+
+
 
 def load_handfile(path, importer=None):
     """
