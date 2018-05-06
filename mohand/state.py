@@ -13,6 +13,7 @@ from mohand.version import get_cli_version
 """
 env = _AttributeDict({
     'version': get_cli_version(),
+    'plugin_namespace': 'mohand.plugin.hand',
 
     # 终端再赋值
     'handfile': 'handfile.py',

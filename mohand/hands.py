@@ -5,6 +5,7 @@ import stevedore
 
 from mohand.exception import HandDuplicationOfNameError
 from mohand.utils import Singleton, _AttributeDict
+from mohand.state import env
 
 
 @six.add_metaclass(abc.ABCMeta)
@@ -42,7 +43,7 @@ def load_hands():
     """
     # 注册hand插件
     mgr = stevedore.ExtensionManager(
-        namespace='mohand.plugin.hand',
+        namespace=env.plugin_namespace,
         invoke_on_load=True)
 
     def register_hand(ext):
