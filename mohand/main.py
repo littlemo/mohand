@@ -131,7 +131,12 @@ def load_handfile(path, importer=None):
     导入传入的 ``handfile`` 文件路径，并返回(docstring, callables)
 
     也就是 handfile 包的 ``__doc__`` 属性 (字符串) 和一个 ``{'name': callable}``
-    的字典，包含所有通过 mohand 的 hand 测试的 callables
+    的字典，包含所有通过 mohand 的 command 测试的 callables
+
+    :param str path: 待导入的 handfile 文件路径
+    :param function importer: 可选，包导入函数，默认为 ``__import__``
+    :return: 包描述文档，仅含终端命令函数的对象字典
+    :rtype: (str, dict(str, obj))
     """
     if importer is None:
         importer = __import__
@@ -160,7 +165,8 @@ def load_handfile(path, importer=None):
     # 执行导入（去除 .py 扩展名）
     imported = importer(os.path.splitext(handfile)[0])
 
-    # 从 ``PYTHONPATH`` 中移除我们自己添加的路径（仅仅出于严谨，尽量不污染 ``PYTHONPATH`` ）
+    # 从 ``PYTHONPATH`` 中移除我们自己添加的路径
+    # （仅仅出于严谨，尽量不污染 ``PYTHONPATH`` ）
     if added_to_path:
         del sys.path[0]
 
