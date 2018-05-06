@@ -39,16 +39,16 @@ def _is_package(path):
     )
 
 
-def find_mohandfile(names=None):
+def find_handfile(names=None):
     """
-    尝试定位 ``mohandfile`` 文件，明确指定或逐级搜索父路径
+    尝试定位 ``handfile`` 文件，明确指定或逐级搜索父路径
 
     :param str names: 可选，待查找的文件名，主要用于调试，默认使用终端传入的配置
-    :return: ``mohandfile`` 文件所在的绝对路径
+    :return: ``handfile`` 文件所在的绝对路径
     :rtype: str
     """
     # 如果没有明确指定，则包含 env 中的值
-    names = names or [env.mohandfile]
+    names = names or [env.handfile]
 
     # 若无 ``.py`` 扩展名，则作为待查询名称，追加到 names 末尾
     if not names[0].endswith('.py'):
@@ -78,18 +78,20 @@ def find_mohandfile(names=None):
     return None
 
 
-def load_mohandfile(path, importer=None):
     """
-    导入传入的 ``mohandfile`` 文件路径，并返回(docstring, callables)
 
-    也就是 mohandfile 包的 ``__doc__`` 属性 (字符串) 和一个 ``{'name': callable}``
+def load_handfile(path, importer=None):
+    """
+    导入传入的 ``handfile`` 文件路径，并返回(docstring, callables)
+
+    也就是 handfile 包的 ``__doc__`` 属性 (字符串) 和一个 ``{'name': callable}``
     的字典，包含所有通过 mohand 的 hand 测试的 callables
     """
     if importer is None:
         importer = __import__
 
     # 获取路径&文件名
-    directory, mohandfile = os.path.split(path)
+    directory, handfile = os.path.split(path)
 
     # 如果路径不在 ``PYTHONPATH`` 中，则添加，以便于我们的导入正常工作
     added_to_path = False
@@ -98,7 +100,7 @@ def load_mohandfile(path, importer=None):
         sys.path.insert(0, directory)
         added_to_path = True
 
-    # 如果路径在 ``PYTHONPATH`` 中，则临时将其移到最前，否则其他的 ``mohandfile``
+    # 如果路径在 ``PYTHONPATH`` 中，则临时将其移到最前，否则其他的 ``handfile``
     # 文件将会被优先导入，而不是我们想要导入的那个
     else:
         i = sys.path.index(directory)
@@ -110,7 +112,7 @@ def load_mohandfile(path, importer=None):
             del sys.path[i + 1]
 
     # 执行导入（去除 .py 扩展名）
-    imported = importer(os.path.splitext(mohandfile)[0])
+    imported = importer(os.path.splitext(handfile)[0])
 
     # 从 ``PYTHONPATH`` 中移除我们自己添加的路径（仅仅出于严谨，尽量不污染 ``PYTHONPATH`` ）
     if added_to_path:
@@ -167,14 +169,14 @@ def cli(*args, **kwargs):
 hand = load_hands()
 # print('HandDict@mohand:', id(hand))
 
-# 获取 mohandfile 文件路径
-mohandfile = find_mohandfile()
-if not mohandfile:
+# 获取 handfile 文件路径
+handfile = find_handfile()
+if not handfile:
     click.echo('[{}] {}'.format(
         click.style('ERROR', bg='red'),
-        '未找到 mohandfile 文件！'))
+        '未找到 handfile 文件！'))
     sys.exit(1)
-log.info('mohandfile => {}'.format(mohandfile))
+log.info('handfile => {}'.format(handfile))
 
 
 @hand._click.argument('custom', nargs=-1)
