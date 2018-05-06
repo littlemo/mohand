@@ -175,13 +175,10 @@ def load_handfile(path, importer=None):
         sys.path.insert(index + 1, directory)
         del sys.path[0]
 
-    # 实际加载 hands
-    docstring, new_style, classic, default = load_hands_from_module(imported)
-    hands = new_style if env.new_style_tasks else classic
+    # 实际加载 Command
+    docstring, commands = get_commands_from_module(imported)
 
-    # 清理
-    _seen.clear()
-    return docstring, hands, default
+    return docstring, commands
 
 
 def print_author(ctx, param, value):
