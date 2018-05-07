@@ -18,7 +18,7 @@ format_ = logging.Formatter(LOG_FORMAT)
 sh = logging.StreamHandler(stream=sys.stdout)
 sh.setFormatter(format_)
 log = logging.getLogger(__name__)
-log.setLevel(logging.INFO)
+log.setLevel(logging.WARN)
 log.addHandler(sh)
 
 
