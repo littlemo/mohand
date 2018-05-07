@@ -7,8 +7,8 @@ import sys
 import click
 import logging
 
-from mohand.state import env
 from mohand import hands
+from mohand.state import env
 from mohand.version import get_cli_version
 from mohand.load_file import find_handfile, load_handfile
 
