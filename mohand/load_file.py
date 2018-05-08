@@ -145,7 +145,10 @@ def load_handfile(path, importer=None):
             del sys.path[i + 1]
 
     # 执行导入（去除 .py 扩展名）
+    sys_byte_code_bak = sys.dont_write_bytecode
+    sys.dont_write_bytecode = True
     imported = importer(os.path.splitext(handfile)[0])
+    sys.dont_write_bytecode = sys_byte_code_bak
 
     # 从 ``PYTHONPATH`` 中移除我们自己添加的路径
     # （仅仅出于严谨，尽量不污染 ``PYTHONPATH`` ）
