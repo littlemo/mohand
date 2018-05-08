@@ -46,7 +46,7 @@ def cli(*args, **kwargs):
     """
     通用自动化处理工具
     """
-    print('cli:', args, kwargs)
+    log.debug('cli: {} {}'.format(args, kwargs))
 
     # 使用终端传入的 option 更新 env 中的配置值
     env.update(kwargs)
