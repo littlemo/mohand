@@ -36,22 +36,6 @@ def print_version(ctx, param, value):
     ctx.exit()
 
 
-@click.group()
-@click.option(
-    '--author', is_flag=True, callback=print_author,
-    expose_value=False, is_eager=True, help='作者信息')
-@click.version_option(
-    version=get_cli_version(), help='版本信息')
-def cli(*args, **kwargs):
-    """
-    通用自动化处理工具
-    """
-    log.debug('cli: {} {}'.format(args, kwargs))
-
-    # 使用终端传入的 option 更新 env 中的配置值
-    env.update(kwargs)
-
-
 # 加载所有扩展 hand
 hands.load_hands()
 log.debug('hand@mohand: {}'.format(hands.hand))
@@ -67,6 +51,23 @@ log.info('handfile => {}'.format(handfile))
 
 # 加载 handfile 文件
 handfile_doc, commands = load_handfile(handfile)
+
+
+@click.group()
+@click.option(
+    '--author', is_flag=True, callback=print_author,
+    expose_value=False, is_eager=True, help='作者信息')
+@click.version_option(
+    version=get_cli_version(), help='版本信息')
+def cli(*args, **kwargs):
+    """
+    通用自动化处理工具
+    """
+    log.debug('cli: {} {}'.format(args, kwargs))
+
+    # 使用终端传入的 option 更新 env 中的配置值
+    env.update(kwargs)
+
 
 # 将从 handfile 文件中加载到的 Command 注册到 cli 中
 for cmd in commands.values():
