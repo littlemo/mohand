@@ -14,12 +14,12 @@ from mohand.load_file import find_handfile, load_handfile
 
 
 LOG_FORMAT = "[%(asctime)s][%(name)s:%(lineno)s][%(levelname)s] %(message)s"
-format_ = logging.Formatter(LOG_FORMAT)
-sh = logging.StreamHandler(stream=sys.stdout)
-sh.setFormatter(format_)
+logging.basicConfig(
+    level=logging.WARN,
+    format=LOG_FORMAT,
+    stream=sys.stdout,
+)
 log = logging.getLogger(__name__)
-log.setLevel(logging.WARN)
-log.addHandler(sh)
 
 
 def print_author(ctx, param, value):
