@@ -51,6 +51,7 @@ log.info('handfile => {}'.format(handfile))
 
 # 加载 handfile 文件
 handfile_doc, commands = load_handfile(handfile)
+log.info('handfile文档: {}'.format(handfile_doc))
 
 
 @click.group()
@@ -72,3 +73,6 @@ def cli(*args, **kwargs):
 # 将从 handfile 文件中加载到的 Command 注册到 cli 中
 for cmd in commands.values():
     cli.add_command(cmd)
+
+log.debug('加载完毕，并注册子命令: {}'.format(
+    [c.name for c in commands.values()]))
