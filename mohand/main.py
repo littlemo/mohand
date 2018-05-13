@@ -64,6 +64,8 @@ log.info('handfile文档: {}'.format(handfile_doc))
 def cli(*args, **kwargs):
     """
     通用自动化处理工具
+
+    详情参考 `GitHub <https://github.com/littlemo/mohand>`_
     """
     log.debug('cli: {} {}'.format(args, kwargs))
 
