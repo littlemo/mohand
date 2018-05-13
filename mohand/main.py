@@ -7,9 +7,10 @@ import sys
 import click
 import logging
 
+from prettytable import PrettyTable
+
 from mohand import hands
 from mohand.state import env
-from mohand.version import get_cli_version
 from mohand.load_file import find_handfile, load_handfile
 
 
@@ -32,7 +33,12 @@ def print_author(ctx, param, value):
 def print_version(ctx, param, value):
     if not value or ctx.resilient_parsing:
         return
-    click.echo('Version {}'.format(env.version))
+    table = PrettyTable(['Package Name', 'Version'])
+    table.align['Package Name'] = 'l'
+    table.align['Version'] = 'l'
+    for row in env.version.items():
+        table.add_row(row)
+    click.echo(table)
     ctx.exit()
 
 
