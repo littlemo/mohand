@@ -34,6 +34,78 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
 使用说明
 ========
 
+安装成功后，您将获得 ``mohand`` 终端命令，该命令在调用前会加载当前路径下的 ``handfile.py``
+文件，若没有找到，则会递归向父级路径查找，直到根路径结束。若未找到该文件，则会返回信息如下::
+
+    $ mohand
+    [ERROR] 未找到 handfile 文件！
+
+当其找到该文件后，会立即加载该文件，并停止继续递归。此处我们在当前路径创建该文件，然后再次执行::
+
+    $ touch handfile.py
+    $ mohand
+    Usage: mohand [OPTIONS] COMMAND [ARGS]...
+
+      通用自动化处理工具
+
+      详情参考 `GitHub <https://github.com/littlemo/mohand>`_
+
+    Options:
+      --author   作者信息
+      --version  版本信息
+      --help     Show this message and exit.
+
+此时 ``mohand`` 已经可以正常运行了，但是我们还没有可用于执行的子命令，接下来我们在
+``handfile.py`` 文件中实现一个子命令::
+
+    from mohand.hands import hand
+
+
+    @hand.expect(cmd='ls')
+    def hello(o):
+        """Hello World!"""
+        print('Hello World!')
+
+.. note::
+
+    此处的 ``expect`` 为通过 `mohand-plugin-expect`_ 实现的一个 ``hand`` ，
+    其主要用于 ``SSH`` , ``FTP`` 等一系列远程连接命令，此处用其执行 ``ls`` 仅作为演示，
+    其正确使用姿势可参考该扩展包中的具体文档说明
+
+好，此时我们已经拥有了一个可执行的子命令，如何证明呢？再执行一次 ``mohand`` 看看吧::
+
+    $ mohand
+    Usage: mohand [OPTIONS] COMMAND [ARGS]...
+
+      通用自动化处理工具
+
+      详情参考 `GitHub <https://github.com/littlemo/mohand>`_
+
+    Options:
+      --author   作者信息
+      --version  版本信息
+      --help     Show this message and exit.
+
+    Commands:
+      hello  Hello World!
+
+注意最后两行，现在已经多了一条子命令，其命令名即为我们之前实现的函数名，说明即该函数的 ``__doc__`` 。
+这里的 CLI 是基于 `click`_ 包实现的，故您基本感受不到其存在，相关逻辑已经被封装到 ``hand.expect``
+这个装饰器中了。
+
+接下来就是见证奇迹的时刻了，我们来执行以下这个子命令看看::
+
+    $ mohand hello
+    ls
+    Hello World!
+    handfile.py
+
+看我们实现的命令被执行了，打印出了通过装饰器传入的 ``cmd`` ， ``Hello World!``  ，
+以及当前路径下的文件。
+
+还记得我之前说过的循环递归查找 ``handfile.py`` 文件么？这个性质将很方便，比如将我们刚实现的
+``handfile.py`` 移到 ``~`` 下，这样我们在 ``~`` 目录下就都可以加载到这个文件中的子命令了。
+
 
 .. _Fabric: http://www.fabfile.org
 .. _Gulp: https://gulpjs.com
@@ -42,3 +114,4 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
 .. _mohand-plugin-expect: http://mohand-plugin-expect.rtfd.io/
 .. _virtualenv: http://virtualenv.pypa.io/
 .. _virtualenvwrapper: https://virtualenvwrapper.readthedocs.io/
+.. _click: http://click.pocoo.org/6/
