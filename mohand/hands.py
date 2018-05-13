@@ -22,6 +22,15 @@ class HandBase(object):
         :rtype: function
         """
 
+    @abc.abstractmethod
+    def version(self):
+        """
+        版本信息
+
+        :return: 返回包名，版本号元组
+        :rtype: (str, str)
+        """
+
 
 class HandDict(_AttributeDict):
     """
