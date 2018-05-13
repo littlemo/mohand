@@ -66,7 +66,7 @@ def get_commands_from_module(imported):
 
     :param module imported: 导入的Python包
     :return: 包描述文档，仅含终端命令函数的对象字典
-    :rtype: (str, dict(str, obj))
+    :rtype: (str, dict(str, object))
     """
     # 如果存在 <module>.__all__ ，则遵守
     imported_vars = vars(imported)
@@ -98,7 +98,7 @@ def extract_commands(imported_vars):
 
     :param dict_items imported_vars: 字典的键值条目列表
     :return: 判定为终端命令的对象字典
-    :rtype: dict(str, obj)
+    :rtype: dict(str, object)
     """
     commands = dict()
     for tup in imported_vars:
@@ -118,7 +118,7 @@ def load_handfile(path, importer=None):
     :param str path: 待导入的 handfile 文件路径
     :param function importer: 可选，包导入函数，默认为 ``__import__``
     :return: 包描述文档，仅含终端命令函数的对象字典
-    :rtype: (str, dict(str, obj))
+    :rtype: (str, dict(str, object))
     """
     if importer is None:
         importer = __import__
