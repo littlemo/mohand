@@ -21,6 +21,16 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
 安装方法
 ========
 
+您可以通过 ``pip`` 进行安装，本包仅在 ``Python 3.X`` 下测试通过::
+
+    pip install mohand
+
+.. note::
+
+    建议使用 `virtualenv`_ 来安装，避免与其他包产生依赖冲突。
+
+    如果您感兴趣的话，可以了解下 `virtualenvwrapper`_ ，用其来管理虚拟环境可谓丝般顺滑！
+
 使用说明
 ========
 
@@ -30,3 +40,5 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
 .. _PostCSS: https://postcss.org
 .. _stevedore: https://docs.openstack.org/stevedore/latest/
 .. _mohand-plugin-expect: http://mohand-plugin-expect.rtfd.io/
+.. _virtualenv: http://virtualenv.pypa.io/
+.. _virtualenvwrapper: https://virtualenvwrapper.readthedocs.io/
