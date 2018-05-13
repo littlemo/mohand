@@ -13,6 +13,12 @@ MoHand
    intro/overview
 
 
+.. toctree::
+   :caption: 模块文档
+
+   module/exception
+
+
 索引表
 ======
 
