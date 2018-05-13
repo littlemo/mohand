@@ -4,4 +4,4 @@
 异常模块
 ========
 
-.. autoclass:: mohand.exception.HandDuplicationOfNameError
+.. autoexception:: mohand.exception.HandDuplicationOfNameError
