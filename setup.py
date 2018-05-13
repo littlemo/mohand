@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from mohand.version import get_setup_version
+from source.mohand.version import get_setup_version
 
 
 setup(
@@ -14,7 +14,8 @@ setup(
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     keywords='mohand cli automation',
-    packages=find_packages(exclude=('docs', 'tests*')),
+    packages=find_packages('source'),
+    package_dir={'': 'source'},
     include_package_data=True,
     zip_safe=False,
     license='GPLv3',
