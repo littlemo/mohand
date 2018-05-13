@@ -61,6 +61,9 @@ def load_hands():
             raise HandDuplicationOfNameError(_hand.__name__)
         hand[_hand.__name__] = _hand
 
+        _pkg, _ver = ext.obj.version()
+        env.version[_pkg] = _ver
+
     mgr.map(register_hand)
     return hand
 
