@@ -23,7 +23,7 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
 
 您可以通过 ``pip`` 进行安装，本包仅在 ``Python 3.X`` 下测试通过::
 
-    pip install mohand
+    pip3 install mohand
 
 .. note::
 
