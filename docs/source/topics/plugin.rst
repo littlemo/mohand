@@ -9,6 +9,7 @@
 
 #. 实现一个 ``mohand.hands.HandBase`` 的子类，用于注册您的 **hand** 装饰器、提供版本信息
 #. 实现一个 hand ，如 `mohand-plugin-expect`_ 中的 ``hand.expect``
+#. 在 ``setup.py`` 中添加一个 ``mohand.plugin.hand`` 的 **entry_points**
 
 
 插件列表
