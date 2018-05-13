@@ -68,4 +68,5 @@ def load_hands():
     return hand
 
 
+#: 所有已注册hand插件的装饰器集合实例，可通过 ``.`` 语法获取
 hand = HandDict()
