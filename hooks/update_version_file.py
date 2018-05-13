@@ -37,7 +37,7 @@ print('> Current Soft VersionName is [{name}], VersionCode is [{code}]'.format(
     name=version_name,
     code=version_code))
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-with open(os.path.join(BASE_DIR, 'mohand', 'VERSION'), 'w') as f:
+with open(os.path.join(BASE_DIR, 'source', 'mohand', 'VERSION'), 'w') as f:
     f.write(version_content.format(
         name=version_name,
         code=version_code))
