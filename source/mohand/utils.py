@@ -1,6 +1,4 @@
 """
-工具模块
-
 用以提供全局通用工具方法&类
 """
 from threading import RLock
@@ -28,7 +26,9 @@ class _AttributeDict(dict):
         'bar'
 
     """
+
     def __getattr__(self, key):
+        """重载获取属性方法，使字典支持点语法取值"""
         try:
             return self[key]
         except KeyError:
@@ -36,9 +36,11 @@ class _AttributeDict(dict):
             raise AttributeError(key)
 
     def __setattr__(self, key, value):
+        """重载设置属性方法，使字典支持点语法赋值"""
         self[key] = value
 
     def first(self, *names):
+        """返回列表key在字典中第一个不为空的值"""
         for name in names:
             value = self.get(name)
             if value:
@@ -51,8 +53,8 @@ class Singleton(type):
 
     .. note::
 
-        参考 @马式超 的 `singleton <https://github.com/ShichaoMa/toolkit/
-        blob/master/toolkit/singleton.py>`_ 实现
+        参考实现 `singleton <https://github.com/ShichaoMa/toolkit/
+        blob/master/toolkit/singleton.py>`_
 
     """
     lock = RLock()
@@ -75,6 +77,7 @@ class Singleton(type):
         return cls_
 
     def __call__(cls, *args, **kwargs):
+        """在调用时在线程锁中实现单例实例化"""
         with cls.lock:
             cls._instance = cls._instance or \
                 super(Singleton, cls).__call__(*args, **kwargs)
