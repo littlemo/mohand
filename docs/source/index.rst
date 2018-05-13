@@ -12,6 +12,11 @@ MoHand
 
    intro/overview
 
+.. toctree::
+   :caption: 进阶话题
+
+   topics/plugin
+
 
 .. toctree::
    :caption: 模块文档
