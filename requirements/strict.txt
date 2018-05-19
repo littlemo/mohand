@@ -9,11 +9,10 @@ idna==2.6
 imagesize==1.0.0
 Jinja2==2.10
 MarkupSafe==1.0
--e git+github:littlemo/mohand.git@15f1059155ea41bf3c63c6c1f091759cc6f8b28c#egg=mohand
--e git+github:littlemo/mohand-plugin-expect.git@f9d9d9bd622908db2da83beb2485ac8426bb99d1#egg=mohand_plugin_expect
 packaging==17.1
 pbr==4.0.2
 pexpect==4.5.0
+prettytable==0.7.2
 ptyprocess==0.5.2
 Pygments==2.2.0
 pyparsing==2.2.0
