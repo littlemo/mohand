@@ -14,6 +14,17 @@ from mohand import hands
 from mohand.state import env
 from mohand.load_file import find_handfile, load_handfile
 
+if sys.version > '3':
+    PY3 = True
+else:
+    PY3 = False
+
+if PY3:
+    from imp import reload
+
+if not PY3:
+    reload(sys)
+    sys.setdefaultencoding('utf8')
 
 LOG_FORMAT = "[%(asctime)s][%(name)s:%(lineno)s][%(levelname)s] %(message)s"
 logging.basicConfig(
