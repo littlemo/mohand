@@ -1,4 +1,4 @@
-# encoding=utf-8
+# encoding=utf8
 """
 用以提供全局参数的声明
 """

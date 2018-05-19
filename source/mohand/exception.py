@@ -1,4 +1,4 @@
-# encoding=utf-8
+# encoding=utf8
 """
 自定义异常类
 """

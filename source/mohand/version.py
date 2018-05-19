@@ -1,4 +1,4 @@
-# encoding=utf-8
+# encoding=utf8
 """
 版本号管理模块
 

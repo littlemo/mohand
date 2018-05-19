@@ -1,4 +1,4 @@
-# encoding=utf-8
+# encoding=utf8
 """
 主入口模块
 

@@ -1,4 +1,4 @@
-# encoding=utf-8
+# encoding=utf8
 import os
 import sys
 import click
