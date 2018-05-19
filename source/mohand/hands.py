@@ -40,7 +40,7 @@ class HandDict(_AttributeDict):
     __metaclass__ = Singleton
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+        super(HandDict, self).__init__(*args, **kwargs)
         self['_click'] = click
 
 
