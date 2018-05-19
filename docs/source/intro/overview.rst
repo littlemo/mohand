@@ -25,6 +25,12 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
 
     pip3 install mohand
 
+.. hint::
+
+    从 ``v1.0.1`` 版本开始，增加了对 ``Python 2.X`` 的支持，但由于我主要在 **Py3**
+    环境下使用，所以强烈建议您在 **Py3** 下使用。如果您在 **Py2** 环境下遇到任何异常，
+    可以及时提 `Issues`_ 给我，我会努力在搬砖的间隙进行修复。。。
+
 .. note::
 
     建议使用 `virtualenv`_ 来安装，避免与其他包产生依赖冲突。
@@ -115,3 +121,4 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
 .. _virtualenv: http://virtualenv.pypa.io/
 .. _virtualenvwrapper: https://virtualenvwrapper.readthedocs.io/
 .. _click: http://click.pocoo.org/6/
+.. _Issues: https://github.com/littlemo/mohand/issues
