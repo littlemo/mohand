@@ -15,6 +15,7 @@
 # import os
 # import sys
 import sphinx_rtd_theme
+from mohand.version import VERSION
 # sys.path.insert(0, os.path.abspath('.'))
 
 
@@ -25,9 +26,9 @@ copyright = '2018, littlemo'
 author = 'littlemo'
 
 # The short X.Y version
-version = '1.0'
+version = '.'.join(map(str, VERSION[:2]))
 # The full version, including alpha/beta/rc tags
-release = '1.0.0'
+release = '.'.join(map(str, VERSION[:3]))
 
 
 # -- General configuration ---------------------------------------------------
