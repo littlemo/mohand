@@ -28,6 +28,8 @@ if not PY3:
     reload(sys)
     sys.setdefaultencoding('utf8')
 
+click.disable_unicode_literals_warning = True
+
 LOG_FORMAT = "[%(asctime)s][%(name)s:%(lineno)s][%(levelname)s] %(message)s"
 logging.basicConfig(
     level=logging.WARN,
