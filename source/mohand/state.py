@@ -2,6 +2,8 @@
 """
 用以提供全局参数的声明
 """
+from __future__ import unicode_literals
+
 from collections import OrderedDict
 
 from mohand.utils import _AttributeDict

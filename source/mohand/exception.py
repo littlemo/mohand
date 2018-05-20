@@ -2,6 +2,7 @@
 """
 自定义异常类
 """
+from __future__ import unicode_literals
 
 
 class HandDuplicationOfNameError(Exception):

@@ -4,6 +4,8 @@
 
 用以提供终端可执行命令，并注册子命令
 """
+from __future__ import unicode_literals
+
 import sys
 import click
 import logging

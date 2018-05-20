@@ -4,6 +4,8 @@
 
 分别提供用于打包的版本号，以及终端命令返回的版本号
 """
+from __future__ import unicode_literals
+
 import os
 
 

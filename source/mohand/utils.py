@@ -2,6 +2,8 @@
 """
 用以提供全局通用工具方法&类
 """
+from __future__ import unicode_literals
+
 from threading import RLock
 
 
