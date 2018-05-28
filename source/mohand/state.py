@@ -17,7 +17,7 @@ env = _AttributeDict({
     'plugin_namespace': 'mohand.plugin.hand',
 
     # 终端再赋值
-    'handfile': 'handfile.py',
+    'handfile': 'handfile',
 })
 """
 全局环境字典，包含所有的配置
