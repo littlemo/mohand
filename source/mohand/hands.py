@@ -53,6 +53,9 @@ def load_hands():
     :return: 返回hand注册字典(单例)
     :rtype: HandDict
     """
+    # 优先进行自带 hand 的注册加载
+    import mohand.decorator
+
     # 注册hand插件
     mgr = stevedore.ExtensionManager(
         namespace=env.plugin_namespace,
