@@ -21,6 +21,7 @@ MoHand
 .. toctree::
    :caption: 模块文档
 
+   module/decorator
    module/exception
    module/hands
    module/load_file
