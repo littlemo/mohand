@@ -17,8 +17,12 @@
 
 您可以直接通过名称进行 ``pip`` 安装
 
-mohand-plugin-expect
+`mohand-plugin-expect`_
     可用于自动化登录堡垒机完成跳转选择、账户密码输入等操作
+
+`mohand-plugin-otp`_
+    可用于提供定制化的一次性密码生成服务
 
 
 .. _mohand-plugin-expect: https://github.com/littlemo/mohand-plugin-expect
+.. _mohand-plugin-otp: https://github.com/littlemo/mohand-plugin-otp
