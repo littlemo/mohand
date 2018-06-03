@@ -67,16 +67,10 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
     from mohand.hands import hand
 
 
-    @hand.expect(cmd='ls')
-    def hello(o):
+    @hand.general
+    def hello():
         """Hello World!"""
         print('Hello World!')
-
-.. note::
-
-    此处的 ``expect`` 为通过 `mohand-plugin-expect`_ 实现的一个 ``hand`` ，
-    其主要用于 ``SSH`` , ``FTP`` 等一系列远程连接命令，此处用其执行 ``ls`` 仅作为演示，
-    其正确使用姿势可参考该扩展包中的具体文档说明
 
 好，此时我们已经拥有了一个可执行的子命令，如何证明呢？再执行一次 ``mohand`` 看看吧::
 
@@ -96,18 +90,15 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
       hello  Hello World!
 
 注意最后两行，现在已经多了一条子命令，其命令名即为我们之前实现的函数名，说明即该函数的 ``__doc__`` 。
-这里的 CLI 是基于 `click`_ 包实现的，故您基本感受不到其存在，相关逻辑已经被封装到 ``hand.expect``
+这里的 CLI 是基于 `click`_ 包实现的，故您基本感受不到其存在，相关逻辑已经被封装到 ``hand.general``
 这个装饰器中了。
 
 接下来就是见证奇迹的时刻了，我们来执行以下这个子命令看看::
 
     $ mohand hello
-    ls
     Hello World!
-    handfile.py
 
-看我们实现的命令被执行了，打印出了通过装饰器传入的 ``cmd`` ， ``Hello World!``  ，
-以及当前路径下的文件。
+看我们实现的命令被执行了，打印出了 ``Hello World!`` 。
 
 还记得我之前说过的循环递归查找 ``handfile.py`` 文件么？这个性质将很方便，比如将我们刚实现的
 ``handfile.py`` 移到 ``~`` 下，这样我们在 ``~`` 目录下就都可以加载到这个文件中的子命令了。
