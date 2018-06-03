@@ -1,8 +1,8 @@
 # encoding=utf8
 """
-装饰器
-
-用以提供作为handfile中使用的默认支持的装饰器
+此模块提供随包附带的基础 ``hand`` ，用以实现最基础功能，即将 ``handfile``
+中的目标方法装饰为一个 ``mohand`` 子命令的 ``general`` 装饰器，更多扩展
+``hand`` 您可以通过安装扩展包来获得
 """
 import logging
 from mohand.hands import hand
