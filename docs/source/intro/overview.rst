@@ -103,6 +103,12 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
 还记得我之前说过的循环递归查找 ``handfile.py`` 文件么？这个性质将很方便，比如将我们刚实现的
 ``handfile.py`` 移到 ``~`` 下，这样我们在 ``~`` 目录下就都可以加载到这个文件中的子命令了。
 
+.. note::
+
+    另外， ``mohand`` 还支持对 ``handfile`` 模块的加载，即您可以实现一个以 ``handfile``
+    命名的 **Python** 包，并在其 ``__init__.py`` 中将想要被加载的命令导入，这样
+    ``mohand`` 就会对其进行加载处理，并注册为子命令。
+
 
 .. _Fabric: http://www.fabfile.org
 .. _Gulp: https://gulpjs.com
