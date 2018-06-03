@@ -109,6 +109,36 @@ MoHand 为通用自动化处理工具，主要用于运维自动化。
     命名的 **Python** 包，并在其 ``__init__.py`` 中将想要被加载的命令导入，这样
     ``mohand`` 就会对其进行加载处理，并注册为子命令。
 
+高级用法
+========
+
+由于 ``mohand`` 的终端命令方案使用的是 `click`_ ，故您可以在实现子命令时灵活的增加命令参数,
+继续以上述 ``hello`` 命令为例，为其添加一个终端参数::
+
+    @hand._click.option('--who', '-w', default='World', help='默认值为 `World` ')
+    @hand.general
+    def hello(who):
+        """Hello World!"""
+        print('Hello {}!'.format(who))
+
+我们为 ``hello`` 命令增加了一个 ``who`` 的可选参数，该参数默认值为 ``World`` ，调用看看::
+
+    $ mohand hello --help
+    Usage: mohand hello [OPTIONS]
+
+      Hello World!
+
+    Options:
+      -w, --who TEXT  默认值为 `World`
+      --help          Show this message and exit.
+
+    $ mohand hello
+    Hello World!
+
+    $ mohand hello -w MoHand
+    Hello MoHand!
+
+我们通过传参定制了输出的结果，您可以通过这个方法获得一个强大的命令扩展系统。
 
 .. _Fabric: http://www.fabfile.org
 .. _Gulp: https://gulpjs.com
