@@ -2,13 +2,14 @@
 from __future__ import unicode_literals
 
 import abc
-import six
+
 import click
+import six
 import stevedore
 
 from mohand.exception import HandDuplicationOfNameError
-from mohand.utils import Singleton, _AttributeDict
 from mohand.state import env
+from mohand.utils import Singleton, _AttributeDict
 
 
 @six.add_metaclass(abc.ABCMeta)
