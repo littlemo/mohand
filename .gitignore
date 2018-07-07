@@ -103,6 +103,9 @@ ENV/
 # Sublime Text
 *.sublime-*
 
+# vscode
+.vscode
+
 # cscope
 cscope.*
 
