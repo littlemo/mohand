@@ -55,7 +55,7 @@ def load_hands():
     :rtype: HandDict
     """
     # 优先进行自带 hand 的注册加载
-    import mohand.decorator
+    import mohand.decorator  # noqa
 
     # 注册hand插件
     mgr = stevedore.ExtensionManager(
