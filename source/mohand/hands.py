@@ -71,7 +71,10 @@ def load_hands():
         _pkg, _ver = ext.obj.version()
         env.version[_pkg] = _ver
 
-    mgr.map(register_hand)
+    try:
+        mgr.map(register_hand)
+    except stevedore.exception.NoMatches:
+        pass
     return hand
 
 
