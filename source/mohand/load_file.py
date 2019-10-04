@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 
 import os
 import sys
-import click
 from importlib import import_module
 
+import click
 from mohand.state import env
 
 
@@ -132,38 +132,14 @@ def load_handfile(path, importer=None):
     directory, handfile = os.path.split(path)
 
     # 如果路径不在 ``PYTHONPATH`` 中，则添加，以便于我们的导入正常工作
-    added_to_path = False
-    index = None
     if directory not in sys.path:
         sys.path.insert(0, directory)
-        added_to_path = True
-
-    # 如果路径在 ``PYTHONPATH`` 中，则临时将其移到最前，否则其他的 ``handfile``
-    # 文件将会被优先导入，而不是我们想要导入的那个
-    else:
-        i = sys.path.index(directory)
-        if i != 0:
-            # 为之后的恢复保存索引号
-            index = i
-            # 添加到最前，然后删除原始位置
-            sys.path.insert(0, directory)
-            del sys.path[i + 1]
 
     # 执行导入（去除 .py 扩展名）
     sys_byte_code_bak = sys.dont_write_bytecode
     sys.dont_write_bytecode = True
     imported = importer(os.path.splitext(handfile)[0])
     sys.dont_write_bytecode = sys_byte_code_bak
-
-    # 从 ``PYTHONPATH`` 中移除我们自己添加的路径
-    # （仅仅出于严谨，尽量不污染 ``PYTHONPATH`` ）
-    if added_to_path:
-        del sys.path[0]
-
-    # 将我们移动的 PATH 放回原处
-    if index is not None:
-        sys.path.insert(index + 1, directory)
-        del sys.path[0]
 
     # 实际加载 Command
     docstring, commands = get_commands_from_module(imported)
