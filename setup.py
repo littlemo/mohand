@@ -1,6 +1,6 @@
-from setuptools import setup, find_packages
-from source.mohand.version import get_setup_version
+from setuptools import find_packages, setup
 
+from source.mohand.version import get_setup_version
 
 setup(
     name='mohand',
@@ -28,7 +28,7 @@ setup(
     install_requires=open('requirements/pip.txt').read().splitlines(),
     entry_points={
         'console_scripts': [
-            'mohand = mohand.main:cli',
+            'mohand = mohand.cli:cli',
         ]
     },
     classifiers=[
