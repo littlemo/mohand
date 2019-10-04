@@ -7,6 +7,9 @@ from __future__ import absolute_import, unicode_literals
 import os
 
 import click
+from click import ClickException, Group, Option, echo, option
+from click_didyoumean import DYMMixin
+
 import click_completion
 from mohand.state import env
 from mohand.vendor.prettytable import PrettyTable
@@ -17,6 +20,38 @@ CONTEXT_SETTINGS = {
 }
 
 click_completion.init()
+
+
+class MohandGroup(DYMMixin, Group):
+    """自定义用于格式化主帮助信息的 Group 类"""
+
+    def get_help_option(self, ctx):
+        # from ..core import format_help
+
+        """Override for showing formatted main help via --help and -h options"""
+        help_options = self.get_help_option_names(ctx)
+        if not help_options or not self.add_help_option:
+            return
+
+        def show_help(ctx, param, value):
+            if value and not ctx.resilient_parsing:
+                if not ctx.invoked_subcommand:
+                    # legit main help
+                    # echo(format_help(ctx.get_help()))
+                    echo(ctx.get_help())
+                else:
+                    # legit sub-command help
+                    echo(ctx.get_help(), color=ctx.color)
+                ctx.exit()
+
+        return Option(
+            help_options,
+            is_flag=True,
+            is_eager=True,
+            expose_value=False,
+            callback=show_help,
+            help="输出帮助信息并退出",
+        )
 
 
 def author_option(f):
