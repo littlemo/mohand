@@ -11,6 +11,11 @@ import click_completion
 from mohand.state import env
 from mohand.vendor.prettytable import PrettyTable
 
+CONTEXT_SETTINGS = {
+    "help_option_names": ["-h", "--help"],
+    "auto_envvar_prefix": "MOHAND",
+}
+
 click_completion.init()
 
 
