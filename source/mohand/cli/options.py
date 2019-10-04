@@ -58,9 +58,9 @@ def author_option(f):
     def callback(ctx, param, value):
         if not value or ctx.resilient_parsing:
             return
-        click.echo('Moore.Huang <moore@moorehy.com>')
+        echo('Moore.Huang <moore@moorehy.com>')
         ctx.exit()
-    return click.option(
+    return option(
         '--author', is_flag=True, is_eager=True,
         callback=callback, expose_value=False,
         help='作者信息')(f)
@@ -75,9 +75,9 @@ def version_option(f):
         table.align['Version'] = 'l'
         for row in env.version.items():
             table.add_row(row)
-        click.echo(table)
+        echo(table)
         ctx.exit()
-    return click.option(
+    return option(
         '--version', is_flag=True, is_eager=True,
         callback=callback, expose_value=False,
         help='版本信息')(f)
@@ -105,7 +105,7 @@ def install_cb_option(f):
             mode = mode or 'a'
             content = 'eval "$(mohand --completion)"'
         else:
-            raise click.ClickException('%s is not supported.' % shell)
+            raise ClickException('%s is not supported.' % shell)
 
         d = os.path.dirname(path)
         if not os.path.exists(d):
@@ -115,9 +115,9 @@ def install_cb_option(f):
         f.write("\n")
         f.close()
 
-        click.echo('{shell} 补全插件安装完成: {path}'.format(shell=shell, path=path))
+        echo('{shell} 补全插件安装完成: {path}'.format(shell=shell, path=path))
         exit(0)
-    return click.option(
+    return option(
         '--install', is_flag=True, is_eager=True,
         callback=callback, expose_value=False,
         help="为当前 Shell 安装代码补全扩展")(f)
@@ -129,9 +129,9 @@ def completion_cb_option(f):
             return
         shell = click_completion.get_auto_shell()
         content = click_completion.get_code(shell=shell, prog_name="mohand")
-        click.echo(content)
+        echo(content)
         ctx.exit()
-    return click.option(
+    return option(
         '--completion', is_flag=True, is_eager=True, hidden=True,
         callback=callback, expose_value=False,
         help="输出当前 shell 下的代码补全脚本")(f)
