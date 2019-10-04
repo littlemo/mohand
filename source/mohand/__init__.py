@@ -1,5 +1,6 @@
 import os
 import sys
+
 from .version import get_cli_version
 
 MOHAND_ROOT = os.path.abspath(os.path.dirname(os.path.realpath(__file__)))
