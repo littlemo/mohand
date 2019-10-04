@@ -6,11 +6,10 @@ from __future__ import absolute_import, unicode_literals
 
 import os
 
-from .state import env
-
 import click
 import click_completion
-from .vendor.prettytable import PrettyTable
+from mohand.state import env
+from mohand.vendor.prettytable import PrettyTable
 
 click_completion.init()
 
