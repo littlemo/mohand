@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import os
 import sys
 import click
+from importlib import import_module
 
 from mohand.state import env
 
@@ -125,7 +126,7 @@ def load_handfile(path, importer=None):
     :rtype: (str, dict(str, object))
     """
     if importer is None:
-        importer = __import__
+        importer = import_module
 
     # 获取路径&文件名
     directory, handfile = os.path.split(path)
