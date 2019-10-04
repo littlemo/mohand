@@ -9,12 +9,15 @@ from __future__ import absolute_import, unicode_literals
 import logging
 import sys
 
-from mohand import hands, options
+import click
+import six
+from click_didyoumean import DYMGroup
+
+from mohand import hands
 from mohand.load_file import find_handfile, load_handfile
 from mohand.state import env
 
-import six
-import click
+from . import options
 
 if six.PY2:
     reload(sys)
@@ -50,7 +53,11 @@ handfile_doc, commands = load_handfile(handfile)
 log.info('handfile文档: {}'.format(handfile_doc))
 
 
-@click.group(invoke_without_command=True)
+
+@click.group(
+    cls=options.MohandGroup,
+    invoke_without_command=True,
+    context_settings=options.CONTEXT_SETTINGS)
 @options.author_option
 @options.version_option
 @options.install_cb_option
