@@ -78,6 +78,11 @@ def cli(ctx, *args, **kwargs):
         # Display help to user, if no commands were passed.
         click.echo(ctx.get_help())
 
+# 为帮助信息着色
+cli.help_headers_color = 'yellow'
+cli.help_options_custom_colors = {
+    cmd.name: getattr(cmd, 'help_name_color', None)
+    for cmd in commands.values()}
 
 # 将从 handfile 文件中加载到的 Command 注册到 cli 中
 for cmd in commands.values():
