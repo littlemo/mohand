@@ -1,0 +1,7 @@
+./backups
+./build
+./dist
+./docs
+./hooks
+./requirements
+*.html
