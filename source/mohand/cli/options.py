@@ -11,6 +11,7 @@ from click import ClickException, Group, Option, echo, option
 from click_didyoumean import DYMMixin
 
 import click_completion
+from click_help_colors import HelpColorsCommand, HelpColorsGroup
 from mohand.state import env
 from mohand.vendor.prettytable import PrettyTable
 
@@ -22,7 +23,7 @@ CONTEXT_SETTINGS = {
 click_completion.init()
 
 
-class MohandGroup(DYMMixin, Group):
+class MohandGroup(DYMMixin, HelpColorsGroup):
     """自定义用于格式化主帮助信息的 Group 类"""
 
     def get_help_option(self, ctx):
