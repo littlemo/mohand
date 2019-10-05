@@ -7,33 +7,35 @@ from __future__ import unicode_literals
 from threading import RLock
 
 
-class _AttributeDict(dict):
+class MohandDict(dict):
     """
     允许通过查找/赋值属性来操作键值的字典子类
 
     举个栗子::
 
-        >>> m = _AttributeDict({'foo': 'bar'})
+        >>> m = MohandDict({'foo': 'bar'})
         >>> m.foo
         'bar'
         >>> m.foo = 'not bar'
         >>> m['foo']
         'not bar'
 
-    ``_AttributeDict`` 对象还提供了一个 ``.first()`` 方法，起功能类似
+    ``MohandDict`` 对象还提供了一个 ``.first()`` 方法，起功能类似
     ``.get()`` ，但接受多个键名作为列表多参，并返回第一个命中的键名的值
     再举个栗子::
 
-        >>> m = _AttributeDict({'foo': 'bar', 'biz': 'baz'})
+        >>> m = MohandDict({'foo': 'bar', 'biz': 'baz'})
         >>> m.first('wrong', 'incorrect', 'foo', 'biz')
         'bar'
 
     """
 
-    def __getattr__(self, key):
+    def __getattribute__(self, key):
         """重载获取属性方法，使字典支持点语法取值"""
         try:
-            return self[key]
+            if key in self:
+                return self[key]
+            return super(MohandDict, self).__getattribute__(key)
         except KeyError:
             # 用以符合 __getattr__ 的特性
             raise AttributeError(key)

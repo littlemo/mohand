@@ -5,6 +5,7 @@
 ``hand`` 您可以通过安装扩展包来获得
 """
 import logging
+
 from mohand.hands import hand
 
 log = logging.getLogger(__name__)

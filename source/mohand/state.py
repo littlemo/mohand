@@ -6,11 +6,10 @@ from __future__ import unicode_literals
 
 from collections import OrderedDict
 
-from mohand.utils import _AttributeDict
+from mohand.utils import MohandDict
 from mohand.version import get_cli_version
 
-
-env = _AttributeDict({
+env = MohandDict({
     'version': OrderedDict({
         'mohand': get_cli_version(),
     }),

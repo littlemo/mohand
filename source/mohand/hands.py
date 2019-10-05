@@ -9,7 +9,7 @@ import stevedore
 
 from mohand.exception import HandDuplicationOfNameError
 from mohand.state import env
-from mohand.utils import Singleton, _AttributeDict
+from mohand.utils import MohandDict, Singleton
 
 
 @six.add_metaclass(abc.ABCMeta)
@@ -36,7 +36,7 @@ class HandBase(object):
         """
 
 
-class HandDict(_AttributeDict):
+class HandDict(MohandDict):
     """
     Hand扩展插件集合字典(单例)
     """
