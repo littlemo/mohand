@@ -55,6 +55,13 @@ class MohandGroup(DYMMixin, HelpColorsGroup):
         )
 
 
+class MohandCommand(HelpColorsCommand):
+    """自定义用于格式化命令帮助信息的 Command 类"""
+    def __init__(self, help_name_color=None, *args, **kwargs):
+        self.help_name_color = help_name_color
+        super(MohandCommand, self).__init__(*args, **kwargs)
+
+
 def author_option(f):
     def callback(ctx, param, value):
         if not value or ctx.resilient_parsing:
