@@ -54,7 +54,7 @@ class MohandGroup(DYMMixin, HelpColorsGroup):
             is_eager=True,
             expose_value=False,
             callback=show_help,
-            help="输出帮助信息并退出",
+            help=u"输出帮助信息并退出",
         )
 
 
@@ -63,6 +63,31 @@ class MohandCommand(HelpColorsCommand):
     def __init__(self, help_name_color=None, *args, **kwargs):
         self.help_name_color = help_name_color
         super(MohandCommand, self).__init__(*args, **kwargs)
+
+    def get_help_option(self, ctx):
+        """Override for showing formatted main help via --help and -h options"""
+        help_options = self.get_help_option_names(ctx)
+        if not help_options or not self.add_help_option:
+            return
+
+        def show_help(ctx, param, value):
+            if value and not ctx.resilient_parsing:
+                if not ctx.invoked_subcommand:
+                    # legit main help
+                    echo(ctx.get_help())
+                else:
+                    # legit sub-command help
+                    echo(ctx.get_help(), color=ctx.color)
+                ctx.exit()
+
+        return Option(
+            help_options,
+            is_flag=True,
+            is_eager=True,
+            expose_value=False,
+            callback=show_help,
+            help=u"输出帮助信息并退出",
+        )
 
 
 def author_option(f):
