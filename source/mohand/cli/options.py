@@ -25,6 +25,9 @@ click_completion.init()
 
 class MohandGroup(DYMMixin, HelpColorsGroup):
     """自定义用于格式化主帮助信息的 Group 类"""
+    def __init__(self, help_name_color=None, *args, **kwargs):
+        self.help_name_color = help_name_color
+        super(MohandGroup, self).__init__(*args, **kwargs)
 
     def get_help_option(self, ctx):
         # from ..core import format_help
