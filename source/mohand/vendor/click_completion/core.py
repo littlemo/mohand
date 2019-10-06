@@ -15,9 +15,9 @@ if six.PY3:
     try:
         from enum import Enum
     except ImportError:
-        from mohand.vendor.backports.enum import Enum
+        from mohand.vendor.enum import Enum
 else:
-    from mohand.vendor.backports.enum import Enum
+    from mohand.vendor.enum import Enum
 
 from click_completion.lib import resolve_ctx, split_args, single_quote, double_quote, get_auto_shell
 
