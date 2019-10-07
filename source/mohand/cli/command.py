@@ -7,6 +7,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
+import os
 import sys
 
 import click
@@ -25,15 +26,18 @@ if six.PY2:
 
 click.disable_unicode_literals_warning = True
 
-
 LOG_FORMAT = "[%(asctime)s][%(name)s:%(lineno)s][%(levelname)s] %(message)s"
 logging.basicConfig(
     level=logging.WARN,
     format=LOG_FORMAT,
     stream=sys.stdout,
 )
-log = logging.getLogger(__name__)
 
+# 调试模式
+if os.getenv('MOHAND_DEBUG_MODE'):
+    logging.root.setLevel(logging.DEBUG)
+
+log = logging.getLogger(__name__)
 
 # 加载所有扩展 hand
 hands.load_hands()
