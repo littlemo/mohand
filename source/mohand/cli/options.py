@@ -106,7 +106,7 @@ def option_author(f):
     return option(
         '--author', is_flag=True, is_eager=True,
         callback=callback, expose_value=False,
-        help='作者信息')(f)
+        help=u'作者信息')(f)
 
 
 def option_version(f):
@@ -123,7 +123,7 @@ def option_version(f):
     return option(
         '--version', is_flag=True, is_eager=True,
         callback=callback, expose_value=False,
-        help='版本信息')(f)
+        help=u'版本信息')(f)
 
 
 def option_install(f):
@@ -163,7 +163,7 @@ def option_install(f):
     return option(
         '--install', is_flag=True, is_eager=True,
         callback=callback, expose_value=False,
-        help="为当前 Shell 安装代码补全扩展")(f)
+        help=u"为当前 Shell 安装代码补全扩展")(f)
 
 
 def option_completion(f):
@@ -177,4 +177,4 @@ def option_completion(f):
     return option(
         '--completion', is_flag=True, is_eager=True, hidden=True,
         callback=callback, expose_value=False,
-        help="输出当前 shell 下的代码补全脚本")(f)
+        help=u"输出当前 shell 下的代码补全脚本")(f)
