@@ -90,7 +90,7 @@ class MohandCommand(HelpColorsCommand):
         )
 
 
-def author_option(f):
+def option_author(f):
     def callback(ctx, param, value):
         if not value or ctx.resilient_parsing:
             return
@@ -102,7 +102,7 @@ def author_option(f):
         help='作者信息')(f)
 
 
-def version_option(f):
+def option_version(f):
     def callback(ctx, param, value):
         if not value or ctx.resilient_parsing:
             return
@@ -119,7 +119,7 @@ def version_option(f):
         help='版本信息')(f)
 
 
-def install_cb_option(f):
+def option_install(f):
     def callback(ctx, attr, value):
         if not value or ctx.resilient_parsing:
             return value
@@ -159,7 +159,7 @@ def install_cb_option(f):
         help="为当前 Shell 安装代码补全扩展")(f)
 
 
-def completion_cb_option(f):
+def option_completion(f):
     def callback(ctx, attr, value):
         if not value or ctx.resilient_parsing:
             return

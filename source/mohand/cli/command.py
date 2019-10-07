@@ -57,15 +57,14 @@ handfile_doc, commands = load_handfile(handfile)
 log.info('handfile文档: {}'.format(handfile_doc))
 
 
-
 @click.group(
     cls=options.MohandGroup,
     invoke_without_command=True,
     context_settings=options.CONTEXT_SETTINGS)
-@options.author_option
-@options.version_option
-@options.install_cb_option
-@options.completion_cb_option
+@options.option_author
+@options.option_version
+@options.option_install
+@options.option_completion
 @click.pass_context
 def cli(ctx, *args, **kwargs):
     """
