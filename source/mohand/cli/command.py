@@ -12,7 +12,6 @@ import sys
 
 import click
 import six
-from click_didyoumean import DYMGroup
 
 from mohand import hands
 from mohand.load_file import find_handfile, load_handfile
