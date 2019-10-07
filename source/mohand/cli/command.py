@@ -83,6 +83,10 @@ def cli(ctx, *args, **kwargs):
         # Display help to user, if no commands were passed.
         click.echo(ctx.get_help())
 
+# 设置主入口命令的帮助信息
+if handfile_doc:
+    cli.help = handfile_doc
+
 # 为帮助信息着色
 cli.help_headers_color = 'yellow'
 cli.help_options_custom_colors = {
