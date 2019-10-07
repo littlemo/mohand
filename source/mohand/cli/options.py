@@ -90,6 +90,13 @@ class MohandCommand(HelpColorsCommand):
         )
 
 
+def option_verbose(f):
+    return option(
+        '-v', '--verbose', count=True,
+        expose_value=True,
+        help=u'开启冗余输出')(f)
+
+
 def option_author(f):
     def callback(ctx, param, value):
         if not value or ctx.resilient_parsing:

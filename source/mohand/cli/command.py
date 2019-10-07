@@ -65,6 +65,7 @@ log.info('handfile文档: {}'.format(handfile_doc))
 @options.option_version
 @options.option_install
 @options.option_completion
+@options.option_verbose
 @click.pass_context
 def cli(ctx, *args, **kwargs):
     # type: (click.Context, list, dict) -> None
@@ -77,6 +78,7 @@ def cli(ctx, *args, **kwargs):
 
     # 使用终端传入的 option 更新 env 中的配置值
     env.update(kwargs)
+    ctx.meta['verbose'] = kwargs.get('verbose', 0)
 
     if ctx.invoked_subcommand is None:
         # Display help to user, if no commands were passed.
