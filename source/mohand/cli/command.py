@@ -67,6 +67,7 @@ log.info('handfile文档: {}'.format(handfile_doc))
 @options.option_completion
 @click.pass_context
 def cli(ctx, *args, **kwargs):
+    # type: (click.Context, list, dict) -> None
     """
     通用自动化处理工具
 
