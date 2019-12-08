@@ -1,11 +1,12 @@
 language: python
 dist: trusty
 python:
-  - "2.7"
+  - '2.7'
 install:
   - pip install -r requirements/pip.txt
   - pip install -e .
-  - python -c 'import pkg_resources; print("export VERSION={}".format(pkg_resources.get_distribution("mohand").version))' > VERSION && source VERSION
+  - python -c 'import pkg_resources; print("export VERSION={}".format(pkg_resources.get_distribution("mohand").version))'
+    > VERSION && source VERSION
 script:
   - echo "No Test"
 deploy:
