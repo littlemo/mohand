@@ -1,7 +1,6 @@
 # encoding=utf-8
+import os
 from setuptools import find_packages, setup
-
-from source.mohand.version import get_setup_version
 
 setup(
     name='mohand',
@@ -10,7 +9,7 @@ setup(
     author_email='moore@moorehy.com',
     maintainer='littlemo',
     maintainer_email='moore@moorehy.com',
-    version=get_setup_version(),
+    version=os.getenv('PKG_VERSION', '0.0.0'),
     description='通用自动化处理工具',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',

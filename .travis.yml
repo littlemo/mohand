@@ -5,10 +5,12 @@ python:
 install:
   - pip install -r requirements/pip.txt
   - pip install -e .
-  - python -c 'import pkg_resources; print("export VERSION={}".format(pkg_resources.get_distribution("mohand").version))'
-    > VERSION && source VERSION
 script:
-  - echo "No Test"
+  - export PKG_VERSION=$(git describe --abbrev=0 --tags)
+  - env | grep PKG_VERSION
+# before_deploy:
+  # - sed -i 's/0\.0\.0/'"$VERSION"'/g' setup.py
+  # - cat setup.py
 deploy:
   provider: pypi
   on:
