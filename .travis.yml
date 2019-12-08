@@ -1,0 +1,18 @@
+language: python
+dist: trusty
+python:
+  - "2.7"
+  - "3.5"
+install:
+  - pip install -r requirements/pip.txt
+  - pip install -e .
+  - python -c 'import pkg_resources; print("export VERSION={}".format(pkg_resources.get_distribution("mohand").version))' > VERSION && source VERSION
+deploy:
+  provider: pypi
+  on:
+    tags: true
+  distributions: "bdist_wheel"
+  skip_existing: true
+  user: "moore"
+  password:
+    secure: iUN0pLADgbH3ZFCcaG3K8iBhFYCNTOUOYYQRpoWR6IDtTRoPA3Y7Pu4IGJqwOPRGbZe7XDLdNpcyonj1maTBdQ6yof+/Fbn6zsXfCOYJ9wKwHUUTmXKulq/+qSTdLBmml/eCEh/4gobdQsAAzm3x0DQ/MbV2zCI2dGiC9CXBERQ5EjlW/ekK7QaxGWgLaGEKOEGoIbjGnHV/KZYOt5wgZhL68mkrXnlYjrN3PhMqA52zienEFVJ+N82BiZ0JdX65TGR/p6cNVOVTPMw6YItKqbENhWGoI+vB/cvHBbpedSETTaihrTTkeMPJNFiz1L28qivVDQ71Hm7lD3aNspcOjhTNOBO/oo0EvqKmyqkff4PLOQhwgDr1ih8vTCxZA/Fy/OTaqrrjZ0NBQli99+gkI6V7TcPYKUZNbrV6FA+cFQetnf43qvlCC7JwM+UVc3D9Tg9AHHd46sZ+ZIO7oFrxlUMYsyPS8d3pJ/Vz/XMitcfQgoKPPhZ+TTAV6OfkQq/Oe5rI7nH/+SNsjWrilKCHQfcaFz2TNxF7ga4N5CfHj1TMrgOBmm/uhbXBEp8tRmiSLgi3tPyKCascHnhMmakw3G9ZxqWMiPmSj46IhjfB4BS7ndttlLw4ZFo2joltwHx+TlogW2WGkDB5AzwNG537oU6IJKd3n94GaaCYGSOGxHg=
