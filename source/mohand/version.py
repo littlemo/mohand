@@ -8,7 +8,6 @@ from __future__ import unicode_literals
 
 import os
 
-
 VERSION_SUFFIX_DEV = 'dev'
 VERSION_SUFFIX_POST = 'post'
 VERSION_SUFFIX_ALPHA = 'a'
@@ -16,7 +15,7 @@ VERSION_SUFFIX_BETA = 'b'
 VERSION_SUFFIX_RC = 'rc'
 VERSION_SUFFIX_NONE = None
 
-VERSION = (1, 1, 1, VERSION_SUFFIX_NONE, 0)
+VERSION = (1, 2, 0, VERSION_SUFFIX_ALPHA, 0)
 
 
 def get_setup_version():
