@@ -19,6 +19,10 @@
 
 [![Documentation Status](https://readthedocs.org/projects/mohand/badge/?version=latest)](http://mohand.readthedocs.io/zh_CN/latest/?badge=latest)
 
+### CI
+
+[![Build Status](https://travis-ci.org/littlemo/mohand.svg?branch=master)](https://travis-ci.org/littlemo/mohand)
+
 ### PyPi
 
 [![PyPI](https://img.shields.io/pypi/v/mohand.svg)](https://pypi.org/project/mohand/)
