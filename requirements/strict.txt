@@ -14,7 +14,7 @@ pbr==4.0.2
 pexpect==4.5.0
 prettytable==0.7.2
 ptyprocess==0.5.2
-Pygments==2.2.0
+Pygments==2.7.4
 pyparsing==2.2.0
 pytz==2018.4
 requests==2.18.4
